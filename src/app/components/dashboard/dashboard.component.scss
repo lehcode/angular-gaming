@@ -1,0 +1,13 @@
+ol {
+  display: flex;
+  align-items: center;
+  align-content: space-between;
+  flex-wrap: wrap;
+
+  li{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    padding: 10px;
+  }
+}

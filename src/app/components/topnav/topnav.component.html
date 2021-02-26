@@ -1,0 +1,12 @@
+<div class="toolbar" role="banner">
+  <img width="40" alt="Angular Logo" src="assets/images/whg-logo.png" />
+  <span>Categories</span>
+  <a *ngFor="let cat of (categories)"
+     mat-button-a
+     color="accent"
+     class="nav-icon"
+     aria-label="Example icon-button with heart icon">
+    {{ cat }}
+  </a>
+  <div class="spacer"></div>
+</div>

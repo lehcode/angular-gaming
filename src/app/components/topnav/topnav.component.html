@@ -1,12 +1,12 @@
 <div class="toolbar" role="banner">
-  <img width="40" alt="Angular Logo" src="assets/images/whg-logo.png" />
-  <span>Categories</span>
-  <a *ngFor="let cat of (categories)"
-     mat-button-a
-     color="accent"
-     class="nav-icon"
-     aria-label="Example icon-button with heart icon">
-    {{ cat }}
-  </a>
-  <div class="spacer"></div>
+	<div class="btn-group btn-group-toggle">
+		<label *ngFor="let cat of categories$ | async;"
+           class="btn-primary"
+           ngbButtonLabel
+           for="{{ cat.name }}-category-btn"
+           [class.selected]="cat.selected"
+    >
+      <button ngbButton id="{{ cat.name }}-category-btn" (click)="onNavClick($event)">{{ cat.name }}</button>
+    </label>
+	</div>
 </div>

@@ -1,0 +1,33 @@
+@import "./src/assets/scss/styles";
+
+.toolbar {
+  display: flex;
+  flex-direction: row;
+
+  .btn-group {
+    width: 100%;
+  }
+
+  .btn {
+    border: 0;
+    padding: 0;
+
+    &:hover {
+      background-color: $games-green;
+    }
+
+    button {
+      background: transparent;
+      border: none;
+      color: $games-white;
+      font-size: 3.6rem;
+      line-height: 8.6rem;
+      text-transform: capitalize;
+    }
+
+    &:first-child,
+    &:last-child {
+      border-radius: 0;
+    }
+  }
+}

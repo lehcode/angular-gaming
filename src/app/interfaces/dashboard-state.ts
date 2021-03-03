@@ -1,11 +1,11 @@
 import { GameEntity } from './game-entity';
+import { CategoryItem } from "~/app/interfaces/category-item";
 
 export interface DashboardState {
   games?: GameEntity[];
-  categories?: string[];
+  categories?: CategoryItem[];
   selectedCategory?: string;
-  selectedGame?: GameEntity;
+  selectedGame?: GameEntity | null;
   isLoading?: boolean;
   isLoadingSuccess?: boolean;
-  isLoadingFailure?: boolean;
 }

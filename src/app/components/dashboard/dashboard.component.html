@@ -1,5 +1,6 @@
 <div>
+  <div>Category: {{ category$ | async }}</div>
   <ol>
-    <li *ngFor="let game of games">{{ game | json }}</li>
+    <li *ngFor="let game of games$ | async;"><span class="json">{{ game | json }}</span></li>
   </ol>
 </div>

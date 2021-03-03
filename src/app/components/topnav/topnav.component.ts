@@ -1,10 +1,14 @@
-import { Component, OnInit, Output } from '@angular/core';
-import * as fromDashboard from '~/app/state/dashboard';
-import { takeUntil } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import * as dashboardState from '~/app/state/dashboard/dashboard.selectors';
+import { catchError, map, mergeMap, takeUntil, tap } from 'rxjs/operators';
 import { GameEntity } from '~/app/interfaces/game-entity';
 import { Store } from '@ngrx/store';
-import { Subject, throwError } from 'rxjs';
-import EventEmitter from 'events';
+import { CategoryItem } from '~/app/interfaces/category-item';
+import { DashboardState } from '~/app/interfaces/dashboard-state';
+import { from, Observable, of, Subject } from 'rxjs';
+import * as dashboardActions from '~/app/state/dashboard/dashboard.actions';
+import { GamesService } from '~/app/services/games.service';
+import { Actions, ofType } from '@ngrx/effects';
 
 @Component({
   selector: 'app-topnav',
@@ -12,34 +16,28 @@ import EventEmitter from 'events';
   styleUrls: ['./topnav.component.scss']
 })
 export class TopnavComponent implements OnInit {
-  readonly categories: string[] = ['all'];
+  destroy$: Subject<boolean> = new Subject<boolean>();
 
-  constructor(private readonly store: Store<{ categories: string[] }>) {}
+  categories$: Observable<CategoryItem[]> = of([]);
 
-  ngOnInit(): void {
-    this.store
-      .select(fromDashboard.gamesState)
-      .pipe(takeUntil(this.destroy$))
-      .subscribe((data: any) => {
-        if (data.games.length) {
-          try {
-            data.games.forEach((game: GameEntity) => {
-              if (game.categories) {
-                game.categories.forEach((category) => {
-                  if (this.categories.indexOf(category) === -1) {
-                    this.categories.push(category);
-                  }
-                });
-              }
-            });
-          } catch (error) {
-            debugger;
-            throwError(error);
-          }
-        }
-      });
+  selected$: Observable<string> = of('default');
+
+  constructor(
+    private readonly store: Store<{ categories: CategoryItem[]; selectedCategory: string }>,
+    private readonly actions$: Actions
+  ) {}
+
+  ngOnInit() {
+    this.categories$ = this.store.select(dashboardState.getCategories).pipe(
+      takeUntil(this.destroy$),
+      map((resolved) => resolved.categories)
+    );
+    this.selected$ = this.store.select(dashboardState.selectedCategory).pipe(map((cat) => cat.name));
   }
 
-  // eslint-disable-next-line @typescript-eslint/member-ordering
-  destroy$: Subject<boolean> = new Subject<boolean>();
+  onNavClick(event: Event) {
+    // @ts-ignore
+    const selected = /^([a-z]+)([a-z-]+)/.exec(event.target.id)[1];
+    this.store.dispatch({type: dashboardActions.selectCategorySuccess.type, category: selected});
+  }
 }

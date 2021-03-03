@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
-import { filter } from 'rxjs/operators';
+import { filter, map, mergeMap } from "rxjs/operators";
 import { GameEntity } from '../interfaces/game-entity';
 
 @Injectable({
@@ -19,14 +19,14 @@ export class GamesService {
   /**
    * List of all games
    */
-  fetchAll(): GameEntity[] {
-    return this.games;
+  fetchAll$(): Observable<GameEntity[]> {
+    return this.api.games$;
   }
 
   /**
    * Single game
    */
   fetchGame(id: string): GameEntity {
-    return this.fetchAll().filter((game: GameEntity) => game.id === id)[0] as GameEntity;
+    return this.games.filter((game: GameEntity) => game.id === id)[0] as GameEntity;
   }
 }

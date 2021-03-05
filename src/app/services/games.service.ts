@@ -1,7 +1,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable, of } from 'rxjs';
-import { filter, map, mergeMap } from "rxjs/operators";
+import { filter, map, mergeMap } from 'rxjs/operators';
 import { GameEntity } from '../interfaces/game-entity';
 
 @Injectable({

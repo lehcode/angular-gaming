@@ -1,13 +1,152 @@
-ol {
+@import "./src/assets/scss/styles";
+
+ul {
   display: flex;
   align-items: center;
   align-content: space-between;
   flex-wrap: wrap;
 
   li{
-    width: 200px;
-    height: 200px;
+    min-width: 16rem;
     overflow: hidden;
-    padding: 10px;
+    padding: 0 1rem 1rem;
+    width: 16%;
+    margin-top: 5.7rem;
+    padding-top: 7px;
+    padding-right: 7px;
+  }
+}
+
+img {
+  max-width: 100%;
+  min-width: 100%;
+  height: auto;
+  border-radius: 2.2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.jackpot {
+  position: absolute;
+  border-radius: 2.2rem 2.2rem 0;
+  color: $games-white;
+  text-align: center;
+  width: 100%;
+  background-size: contain;
+  font-weight: 600;
+  line-height: 4.2rem;
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.81+0,0.82+36,0+100 */
+  background: -moz-linear-gradient(top,  rgba(0,0,0,0.81) 0%, rgba(0,0,0,0.82) 36%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.81) 0%,rgba(0,0,0,0.82) 36%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(0,0,0,0.81) 0%,rgba(0,0,0,0.82) 36%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+}
+
+.new-overlay {
+  width: 60%;
+  height: 90%;
+  right: -3%;
+  top: -4%;
+  position: absolute;
+  background: url("../../../assets/images/new-overlay.png");
+  background-size: cover;
+}
+
+.card {
+  background: transparent;
+}
+
+@include media-breakpoint-up(sm) {
+  ul{
+    li{
+      width: 100%;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  ul{
+    li{
+      width: 50%;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  :host {
+    padding-left: 9rem;
+    padding-right: 8.1rem;
+  }
+
+  ul{
+    li{
+      width: 25%;
+    }
+  }
+
+  .jackpot {
+    font-size: 2rem;
+    line-height: 4.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  ol {
+    li {
+      .jackpot {
+        font-size: 2.4rem;
+        line-height: 5.8rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(xl) {
+  :host {
+    padding-left: 12.2rem;
+    padding-right: 12.7rem;
+  }
+}
+
+@media(min-width: 1400px) {
+  :host {
+    padding-left: 23.2rem;
+    padding-right: 22.7rem;
+  }
+
+  .jackpot {
+    line-height: 6.3rem;
+  }
+
+  .new-overlay {
+    width: 60%;
+    height: 90%;
+    right: -3%;
+    top: -4%;
+  }
+
+  ul {
+    li {
+      width: 20%;
+    }
+  }
+
+  .jackpot{
+    font-size: 2.8rem;
+  }
+}
+
+@inlude media-breakpoint-between(lg, xl) {
+  :host {
+    padding-left: 16.2rem;
+    padding-right: 15.6rem;
+  }
+
+  ul {
+    li {
+      width: 25%;
+    }
   }
 }

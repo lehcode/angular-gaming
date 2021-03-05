@@ -1,6 +1,11 @@
-<div>
-  <div>Category: {{ category$ | async }}</div>
-  <ol>
-    <li *ngFor="let game of games$ | async;"><span class="json">{{ game | json }}</span></li>
-  </ol>
-</div>
+<ul>
+  <li *ngFor="let game of games$ | async;">
+    <div class="game card">
+      <div class="image">
+        <a [href]="game.href"><img src="{{ game.image }}" alt="{{ game.id }} game"/></a>
+      </div>
+      <div class="jackpot" *ngIf="game.jackpot">{{ game.jackpot }}</div>
+      <div class="new-overlay" *ngIf="game.isNew"></div>
+    </div>
+  </li>
+</ul>

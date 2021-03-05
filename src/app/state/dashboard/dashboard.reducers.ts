@@ -5,8 +5,6 @@ import { DashboardState } from '~/app/interfaces/dashboard-state';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { environment } from '~/environments/environment';
 import { throwError } from 'rxjs';
-import { GameEntity } from '~/app/interfaces/game-entity';
-import * as dashboardSelectors from '~/app/state/dashboard/dashboard.selectors';
 
 // const getGamesReducer = (state: DashboardState, action) => state;
 
@@ -52,19 +50,16 @@ const dashboardReducer = createReducer(
   }))
 );
 
-const debug = (reducer: ActionReducer<any>): ActionReducer<any> => (state, action) => {
+const debug = (targetReducer: ActionReducer<any>): ActionReducer<any> => (state, action) => {
   console.log('state', state);
   console.log('action', action);
 
   try {
-    return reducer(state, action);
+    return targetReducer(state, action);
   } catch (err) {
     throwError(err);
   }
 };
-
-const localStorageSyncReducer = (reducer: ActionReducer<any>): ActionReducer<any> =>
-  localStorageSync({ keys: ['games', 'categories', 'selectedCategory'] })(reducer);
 
 const reducer = (state: any, action: Action): any => {
   console.log(state);

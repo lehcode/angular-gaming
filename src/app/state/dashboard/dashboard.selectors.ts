@@ -24,7 +24,7 @@ export const selectedCategory = createSelector(selectedCategoryState, (state: Da
 } => {
   console.log(state);
 
-  return { name: state.selectedCategory as string }
+  return { name: state.selectedCategory as string };
 });
 export const selectedGame = createSelector(
   selectedGameState,

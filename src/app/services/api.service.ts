@@ -28,7 +28,11 @@ export class ApiService {
         games.forEach((game: Record<string, any>) => {
           jackpots.forEach((jp: JackpotInput) => {
             if (jp.game === game.id) {
-              Object.assign(game, { jackpot: jp.amount });
+              Object.assign(game, {
+                jackpot: new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(jp.amount),
+                href: `/games/${game.id.toLowerCase()}`,
+                isNew: game.categories.findIndex((el) => el === 'new') >= 0 ? true : false
+              });
             }
           });
         });

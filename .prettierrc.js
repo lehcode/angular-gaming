@@ -17,7 +17,6 @@ module.exports = {
       files: ['*.js'],
       options: {
         trailingComma: 'es5',
-        semi: true,
         singleQuote: true,
       },
     },
@@ -25,25 +24,29 @@ module.exports = {
       files: ['*.ts'],
       options: {
         parser: 'typescript',
-        semi: true,
         singleQuote: true,
       },
     },
     {
       files: ['*.json'],
       options: {
+        parser: 'json',
         tabWidth: 4,
-        semi: true,
-        singleQuote: false,
       },
     },
     {
       files: ['*.yml'],
       options: {
+        parser: 'yaml',
         tabWidth: 4,
-        semi: true,
-        singleQuote: false,
       },
-    }
+    },
+    {
+      files: ['*.scss'],
+      options: {
+        parser: 'scss',
+        tabWidth: 4,
+      },
+    },
   ],
 };

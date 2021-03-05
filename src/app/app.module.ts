@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //
 import { reducers, metaReducers } from '~/app/state/dashboard/dashboard.reducers';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,8 +24,7 @@ import { TopnavComponent } from '~/app/components/topnav/topnav.component';
       metaReducers
     }),
     EffectsModule.forRoot(),
-    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 5 }) : [],
-    NgbModule
+    !environment.production ? StoreDevtoolsModule.instrument({ maxAge: 5 }) : []
   ],
   providers: [],
   bootstrap: [AppComponent]

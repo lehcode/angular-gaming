@@ -1,28 +1,45 @@
 @import "./src/assets/scss/styles";
+@import '~mdb-ui-kit/css/mdb.min.css';
 
-.toolbar {
+.navbar {
   display: flex;
-  flex-direction: row;
+  padding: 0;
+  box-shadow: none;
+  height: 8.7rem;
+  margin-top: -1px;
+}
 
-  .btn-group {
-    width: 100%;
-  }
+ul {
+  box-shadow: none;
+  width: 100%;
+  justify-content: space-evenly;
+  background: $games-gray;
 
-  .btn {
+  li {
     border: 0;
     padding: 0;
+    width: 100%;
+    text-align: center;
 
-    &:hover {
+    &:hover, .selected {
       background-color: $games-green;
     }
 
     button {
-      background: transparent;
+      background: $games-gray;
       border: none;
-      color: $games-white;
-      font-size: 3.6rem;
+      color: $games-white !important;
       line-height: 8.6rem;
       text-transform: capitalize;
+      width: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      font-weight: normal;
+      padding: 0;
+
+      &:focus, &:active {
+        box-shadow: none;
+      }
     }
 
     &:first-child,
@@ -31,3 +48,61 @@
     }
   }
 }
+
+@media(min-width: 576px) {
+  .navbar {
+    height: auto;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  ul {
+    li {
+      button {
+        font-size: 2.2rem;
+        padding: 0 1.2rem;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  ul {
+    li {
+      button {
+        font-size: 2.8rem !important;
+      }
+    }
+  }
+}
+
+@media(min-width: 1400px) {
+  ul {
+    li {
+      button {
+        font-size: 3.6rem !important;
+      }
+    }
+  }
+}
+
+@include media-breakpoint-down(md) {
+  ul {
+    li {
+      button {
+        font-size: 3rem !important;
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+//@include media-breakpoint-down(sm) {
+//  ul {
+//    li {
+//      button {
+//        font-size: 2.6rem;
+//      }
+//    }
+//  }
+//}

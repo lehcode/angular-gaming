@@ -18,14 +18,12 @@ package:
     - "node_modules/mime-types/**"
     - "node_modules/mime-db/**"
     - "dist/**"
-    - "lambda.js"
 custom:
   apigwBinary:
     types:
       - "*/*"
 functions:
   api:
-    handler: lambda.handler
+    handler: src/lambda.handler
     events:
-      - http: GET {proxy+}
       - http: GET /

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { GameEntity } from '~/app/interfaces/game-entity';
-import { CategoryItem } from "~/app/interfaces/category-item";
+import { CategoryItem } from '~/app/interfaces/category-item';
 
 export const FETCH_GAMES = '[Dashboard] Fetch Games';
 export const FETCH_GAMES_SUCCESS = '[Dashboard] Fetch Games Success';
@@ -26,7 +26,7 @@ export const fetchGamesFailure = createAction(FETCH_GAMES_FAILURE, props<{ any }
 export const getCategories = createAction(GET_CATEGORIES);
 export const getCategoriesSuccess = createAction(GET_CATEGORIES_SUCCESS, props<{ categories: CategoryItem[] }>());
 // eslint-disable-next-line id-blacklist
-export const getCategoriesFailure = createAction(GET_CATEGORIES_FAILURE, props<{ any }>());
+export const getCategoriesFailure = createAction(GET_CATEGORIES_FAILURE, props<{ error: string }>());
 
 export const selectCategory = createAction(SELECT_CATEGORY, props<Record<string, any>>());
 export const selectCategorySuccess = createAction(SELECT_CATEGORY_SUCCESS, props<any>());

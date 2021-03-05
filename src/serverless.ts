@@ -5,11 +5,12 @@ import '@angular/localize/init';
 // eslint-disable
 import 'zone.js/dist/zone-node';
 import { ngExpressEngine } from '@nguniversal/express-engine';
-import { express, Request, Response } from 'express';
 import { join } from 'path';
 import { AppServerModule } from './main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
+
+const express = require('express');
 export const app = express();
 const distFolder = join(process.cwd(), 'dist/ngx-serverless-starter/browser');
 const indexHtml = existsSync(join(distFolder, 'index.original.html')) ? 'index.original.html' : 'index';

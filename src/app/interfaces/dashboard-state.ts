@@ -1,5 +1,5 @@
 import { GameEntity } from './game-entity';
-import { CategoryItem } from "~/app/interfaces/category-item";
+import { CategoryItem } from '~/app/interfaces/category-item';
 
 export interface DashboardState {
   games?: GameEntity[];

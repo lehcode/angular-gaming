@@ -4,4 +4,6 @@ export interface GameEntity {
   image: string;
   id: string;
   jackpot?: number;
+  href?: string;
+  isNew: boolean;
 }

@@ -1,12 +1,13 @@
-<div class="toolbar" role="banner">
-	<div class="btn-group btn-group-toggle">
-		<label *ngFor="let cat of categories$ | async;"
-           class="btn-primary"
-           ngbButtonLabel
-           for="{{ cat.name }}-category-btn"
+<nav class="navbar navbar-expand-lg navbar-light bg-light" role="banner">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li *ngFor="let cat of categories$ | async;"
+          class="nav-item"
+      >
+        <button class="btn btn-primary"
+           id="{{ cat.name }}-category-btn"
+           (click)="onNavClick($event)"
            [class.selected]="cat.selected"
-    >
-      <button ngbButton id="{{ cat.name }}-category-btn" (click)="onNavClick($event)">{{ cat.name }}</button>
-    </label>
-	</div>
-</div>
+        >{{ cat.name }}</button>
+      </li>
+    </ul>
+</nav>
